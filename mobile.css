@@ -1,0 +1,1520 @@
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100000001;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+@media screen and (max-width: 700px){
+    .hamburger {
+        display: flex;
+    }
+
+    .links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease;
+        z-index: 100000000;
+        gap: 40px;
+    }
+
+    .links.active {
+        left: 0;
+    }
+
+    .links a {
+        font-size: 25px !important;
+        padding: 15px 0;
+        width: 80%;
+        text-align: center;
+        transition: color 0.3s ease;
+    }
+
+    .links a:hover {
+        text-decoration: underline;
+    }
+
+    .nav-main-link {
+        display: none;
+    }
+
+    .nav h3 {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 1400px){
+    /* Standardized Section Spacing */
+    .about{
+        padding-bottom: 100px;
+        margin-bottom: 0px;
+    }
+
+    .about-description p{
+        width: 80vw;
+    }
+    
+    .video-box{
+        position: relative; /* take it out of flow */
+        height: 500px;
+        transform: translateX(-50%) translateY(0%);
+    }
+
+    .info-section{
+        padding: 100px 10vw;
+        flex-direction: column;
+    }
+
+    .info-faq-wrap{
+        margin-bottom: 50px;
+        width: 100%
+    }
+
+    .info-image{
+        width: 100%;
+        height: 500px;
+    }
+
+    .mission-section{
+        flex-direction: column;
+        padding: 150px 10vw;
+        padding-bottom: 300px;
+    }
+
+    .mission-text{
+        margin-bottom: 50px;
+        width: 80vw;
+        max-width: 100%;
+    }
+
+    .mission-text h1{
+        width: 100%;
+        font-size: 50px;
+    }
+
+    .mission-text h3{
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .stats{
+        width: 80vw;
+        border-left: none;
+        border-top: 1px solid white;
+        flex-direction: row;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .challenges-section{
+        padding: 100px 10vw;
+    }
+
+    .challenges-section h1{
+        font-size: 50px;
+    }
+
+    .challenges-section h3{
+        width: 80vw;
+        max-width: 100%;
+        font-size: 20px;
+    }
+
+    .testimonial-section h1{
+        font-size: 65px;
+    }
+
+    .zoom-left p{
+        font-size: 16px;
+    }
+
+    .zoom-left h1{
+        font-size: 45px;
+    }
+
+    .zoom-left h2{
+        font-size: 25px;
+    }
+
+    .zoom-right{
+        width: 40%;
+    }
+
+    .team{
+        padding: 100px 10vw;
+    }
+
+    .team-title{
+        font-size: 70px;
+    }
+
+    .ai-title{
+        font-size: 50px;
+    }
+
+    .faq{
+        padding: 100px 10vw;
+    }
+
+    .faq-title{
+        font-size: 50px;
+    }
+
+}
+
+@media screen and (max-width: 1000px){
+    .about-description p{
+        font-size: 16px;
+        width: 85vw;
+        max-width: 100%;
+    }
+
+    .about h1{
+        font-size: 45px;
+    }
+
+    .about h2{
+        font-size: 16px;
+    }
+
+    .info-section{
+        padding: 100px 10vw;
+    }
+
+    .mission-section{
+        padding: 150px 10vw;
+    }
+
+    .triangle{
+        display: none;
+    }
+
+    .challenges-section{
+        padding: 200px 10vw;
+    }
+
+    .challenges-section h1{
+        font-size: 45px;
+    }
+
+    .challenges-section h3{
+        font-size: 18px;
+        width: 85vw;
+        max-width: 100%;
+    }
+
+    .challenges-section h4{
+        font-size: 20px;
+    }
+
+    .dot.active{
+        background-color: black;
+    }
+
+    .long-gradient{
+        padding-top: 200px;
+    }
+
+    .testimonial-section h1{
+        font-size: 60px;
+    }
+
+    .testimonial-section > h2 {
+        font-size: 18px;
+        margin-bottom: 60px;
+    }
+
+    .testimonial-section span{
+        font-size: 16px;
+    }
+
+    .testimonial-list{
+        flex-direction: column;
+    }
+
+    .testimonial{
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 60px;
+    }
+
+    .testimonial img{
+        height: 350px;
+        margin-right: 25px;
+    }
+
+    .testimonial p{
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .stats{
+        flex-direction: column;
+    }
+
+    .stat h2{
+        font-size: 22px;
+    }
+
+    .stat h3{
+        font-size: 16px;
+    }
+
+    .zoom{
+        flex-direction: column;
+        padding-bottom: 600px;
+        padding-top: 150px;
+    }
+
+    .zoom-left{
+        margin-bottom: 60px;
+    }
+
+    .zoom-right{
+        width: 100%;
+    }
+
+    .zoom-left h1{
+        font-size: 45px;
+    }
+
+    .zoom-left h2{
+        font-size: 25px;
+    }
+
+    .zoom-left p{
+        font-size: 16px;
+    }
+
+    .zoom-grid{
+        width: 100%;
+    }
+
+    .ai-features{
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .ai-title{
+        font-size: 45px;
+    }
+
+    .ai-description{
+        font-size: 18px;
+    }
+
+    .feature-title{
+        font-size: 20px;
+    }
+
+    .feature-description{
+        font-size: 14px;
+    }
+
+    .stat-number{
+        font-size: 40px;
+    }
+
+    .stat-label{
+        font-size: 14px;
+    }
+
+    .cta-title{
+        font-size: 30px;
+    }
+
+    .cta-description{
+        font-size: 16px;
+    }
+
+    .team{
+        padding: 80px 8vw;
+    }
+
+    .team-title{
+        font-size: 55px;
+    }
+
+    .team-subtitle{
+        font-size: 18px;
+    }
+
+    .member-name{
+        font-size: 20px;
+    }
+
+    .member-role{
+        font-size: 16px;
+    }
+
+    .team-grid {
+        gap: 30px; /* smaller gap */
+    }
+
+    .member-image{
+        height: 350px;
+    }
+
+    .faq{
+        padding: 80px 8vw;
+    }
+
+    .faq-title{
+        font-size: 45px;
+    }
+
+    .faq-subtitle{
+        font-size: 16px;
+    }
+
+    .faq-question{
+        font-size: 16px;
+    }
+
+    .faq-answer-content{
+        font-size: 14px;
+    }
+
+    .footer-top{
+        flex-direction: column;
+    }
+
+    .footer-logo{
+        margin-bottom: 50px;
+    }
+
+    .footer-links a:nth-child(1){
+        margin-left: 0;
+    }
+
+    /* Footer Font Size Reduction - Starting at 1000px */
+    .footer-top h2{
+        font-size: 28px;
+    }
+
+    .footer-top h3{
+        font-size: 19px;
+    }
+
+    .footer-links a{
+        font-size: 17px;
+    }
+
+    .footer-location h3{
+        font-size: 19px;
+    }
+
+    .footer-location p{
+        font-size: 15px;
+    }
+
+}
+
+@media screen and (max-width: 800px){
+
+    .info-section{
+        padding: 100px 10vw;
+    }
+
+    .challenges-section{
+        padding: 200px 10vw;
+    }
+
+    .team{
+        padding: 60px 6vw;
+    }
+
+    .faq{
+        padding: 60px 6vw;
+    }
+
+    .nav h3{
+        font-size: 25px;
+    }
+
+    .links a{
+        font-size: 15px;
+    }
+
+    .nav-main-link{
+        font-size: 14px;
+    }
+
+    .heading h1{
+        font-size: 50px;
+        line-height: 60px;
+    }
+
+    .heading h2{
+        font-size: 20px;
+        width: 90vw;
+        max-width: 100%;
+    }
+
+    .about h1{
+        font-size: 40px;
+    }
+
+    .about h2{
+        font-size: 15px;
+    }
+
+    .about-description p{
+        font-size: 15px;
+        width: 90vw;
+        max-width: 100%;
+    }
+
+    .mission-text h1{
+        font-size: 45px;
+    }
+
+    .mission-text h3{
+        font-size: 18px;
+    }
+
+    .challenges-section h1{
+        font-size: 40px;
+    }
+
+    .challenges-section h3{
+        font-size: 17px;
+    }
+
+    .challenges-section h4{
+        font-size: 18px;
+    }
+
+    .testimonial-section h1{
+        font-size: 55px;
+    }
+
+    .testimonial-section > h2 {
+        font-size: 17px;
+    }
+
+    .testimonial p{
+        font-size: 15px;
+    }
+
+    .zoom{
+        padding-bottom: 400px;
+    }
+
+    .zoom-left h1{
+        font-size: 40px;
+    }
+
+    .zoom-left h2{
+        font-size: 22px;
+    }
+
+    .zoom-left p{
+        font-size: 15px;
+    }
+
+    .ai-title{
+        font-size: 40px;
+    }
+
+    .ai-description{
+        font-size: 17px;
+    }
+
+    .feature-title{
+        font-size: 18px;
+    }
+
+    .feature-description{
+        font-size: 13px;
+    }
+
+    .stat-number{
+        font-size: 35px;
+    }
+
+    .cta-title{
+        font-size: 28px;
+    }
+
+    .cta-description{
+        font-size: 15px;
+    }
+
+    .team-title{
+        font-size: 50px;
+    }
+
+    .team-subtitle{
+        font-size: 17px;
+    }
+
+    .member-name{
+        font-size: 18px;
+    }
+
+    .member-role{
+        font-size: 15px;
+    }
+
+    .team-grid {
+        gap: 20px; /* smaller gap */
+        grid-template-columns: 1fr;
+    }
+
+    .team-member{
+        margin-bottom: 60px;
+    }
+
+    .member-image{
+        height: 300px;
+    }
+
+    .faq-title{
+        font-size: 40px;
+    }
+
+    .faq-subtitle{
+        font-size: 15px;
+    }
+
+    .faq-question{
+        font-size: 15px;
+    }
+
+    .faq-answer-content{
+        font-size: 13px;
+    }
+
+    /* Footer Font Size Reduction - 800px */
+    .footer-top h2{
+        font-size: 25px;
+    }
+
+    .footer-top h3{
+        font-size: 17px;
+    }
+
+    .footer-links a{
+        font-size: 15px;
+    }
+
+    .footer-location h3{
+        font-size: 17px;
+    }
+
+    .footer-location p{
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (max-width: 700px){
+    .about{
+        padding-bottom: 0px;
+    }
+
+    .about h1{
+        font-size: 35px;
+    }
+
+    .about h2{
+        font-size: 14px;
+    }
+
+    .about-description p{
+        width: 90vw;
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .video-box{
+        height: 600px;
+        width: 100vw;
+        transform: translateX(-50%) translateY(0%);
+    }
+}
+
+@media screen and (max-width: 600px){
+    .info-section{
+        padding: 100px 10vw;
+    }
+
+    .challenges-section{
+        padding: 200px 10vw;
+    }
+
+    .team{
+        padding: 50px 5vw;
+    }
+
+    .faq{
+        padding: 50px 5vw;
+    }
+
+    .nav h3{
+        font-size: 22px;
+    }
+
+    .links a{
+        font-size: 14px;
+    }
+
+    .nav-main-link{
+        font-size: 13px;
+    }
+
+    .heading h1{
+        font-size: 45px;
+        line-height: 55px;
+    }
+
+    .heading h2{
+        font-size: 18px;
+        width: 95vw;
+        max-width: 100%;
+    }
+
+    .heading h3{
+        font-size: 14px;
+    }
+
+    .video-box{
+        height: 350px;
+    }
+
+    .info-faq-wrap{
+        width: 90vw;
+        max-width: 100%;
+    }
+
+    .info-accordion h2{
+        font-size: 22px;
+    }
+
+    .info-accordion p{
+        font-size: 16px;
+    }
+
+    .info-panel p{
+        font-size: 14px;
+    }
+
+    .info-image{
+        height: 300px;
+    }
+
+    .mission-text{
+        width: 90vw;
+        max-width: 100%;
+    }
+
+    .mission-text h1{
+        font-size: 40px;
+    }
+
+    .mission-text h3{
+        font-size: 17px;
+    }
+
+    .stat-row{
+        flex-direction: column;
+    }
+
+    .stat{
+        text-align: left !important;
+    }
+
+    .stat h2{
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .stat h3{
+        font-size: 15px;
+        text-align: left;
+    }
+
+    .challenges-section h1{
+        font-size: 35px;
+    }
+
+    .challenges-section h3{
+        font-size: 16px;
+        width: 90vw;
+        max-width: 100%;
+    }
+
+    .challenges-section h4{
+        font-size: 16px;
+    }
+
+    .carousel-card{
+        height: 400px;
+    }
+
+    .testimonial-section h1{
+        font-size: 50px;
+    }
+
+    .testimonial-section > h2 {
+        font-size: 16px;
+    }
+
+    .testimonial-section span{
+        font-size: 14px;
+    }
+
+    .testimonial{
+        flex-direction: column;
+    }
+
+    .testimonial img{
+        height: 250px;
+        margin-right: 20px;
+    }
+
+    .testimonial p{
+        font-size: 14px;
+    }
+
+    .testimonial h2{
+        font-size: 16px;
+    }
+
+    .testimonial h3{
+        font-size: 14px;
+    }
+
+    .zoom{
+        padding-bottom: 150px;
+    }
+
+    .zoom-left h1{
+        font-size: 30px;
+    }
+
+    .zoom-left h2{
+        font-size: 20px;
+    }
+
+    .zoom-left p{
+        font-size: 14px;
+    }
+
+    .ai-title{
+        font-size: 35px;
+    }
+
+    .ai-description{
+        font-size: 16px;
+    }
+
+    .ai-main-link{
+        font-size: 14px;
+    }
+
+    .ai-subtitle{
+        font-size: 16px;
+    }
+
+    .feature-title{
+        font-size: 16px;
+    }
+
+    .feature-description{
+        font-size: 12px;
+    }
+
+    .stat-number{
+        font-size: 30px;
+    }
+
+    .stat-label{
+        font-size: 12px;
+    }
+
+    .cta-title{
+        font-size: 25px;
+    }
+
+    .cta-description{
+        font-size: 14px;
+    }
+
+    .team-title{
+        font-size: 45px;
+    }
+
+    .team-subtitle{
+        font-size: 16px;
+    }
+
+    .member-name{
+        font-size: 16px;
+    }
+
+    .member-role{
+        font-size: 14px;
+    }
+
+    .team-grid {
+        gap: 15px;
+    }
+
+    .member-image{
+        height: 250px;
+    }
+
+    .faq-title{
+        font-size: 35px;
+    }
+
+    .faq-subtitle{
+        font-size: 14px;
+    }
+
+    .faq-question{
+        font-size: 14px;
+    }
+
+    .faq-answer-content{
+        font-size: 12px;
+    }
+
+    footer{
+        padding: 0;
+    }
+
+    .footer-top{
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 5vw;
+        gap: 20px;
+    }
+
+    .footer-links{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer-links a{
+        margin-left: 0;
+    }
+
+    .footer-locations{
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 5vw 0px 5vw;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .footer-location:nth-child(1){
+        margin-right: 0;
+    }
+
+    .footer-top h2{
+        font-size: 22px;
+    }
+
+    .footer-top h3{
+        font-size: 16px;
+    }
+
+    .footer-links a{
+        font-size: 14px;
+    }
+
+    .footer-location h3{
+        font-size: 16px;
+    }
+
+    .footer-location p{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .challenges-section{
+        padding: 200px 10vw;
+    }
+
+    .team{
+        padding: 40px 4vw;
+    }
+
+    .faq{
+        padding: 40px 4vw;
+    }
+
+    .nav h3{
+        font-size: 20px;
+    }
+
+    .links a{
+        font-size: 13px;
+    }
+
+    .nav-main-link{
+        font-size: 12px;
+    }
+
+    .heading h1{
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .heading h2{
+        font-size: 16px;
+        width: 95vw;
+        max-width: 100%;
+    }
+
+    .heading h3{
+        font-size: 13px;
+    }
+
+    .about h1{
+        font-size: 30px;
+    }
+
+    .about h2{
+        font-size: 13px;
+    }
+
+    .about-description p{
+        width: 95vw;
+        max-width: 100%;
+        font-size: 13px;
+    }
+
+    .video-box{
+        height: 220px;
+        width: 100vw;
+    }
+
+    .play-button{
+        width: 80px;
+        height: 80px;
+    }
+
+    .play-button img{
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+    }
+
+    .info-faq-wrap{
+        width: 95vw;
+        max-width: 100%;
+    }
+
+    .info-accordion h2{
+        font-size: 20px;
+    }
+
+    .info-accordion p{
+        font-size: 14px;
+    }
+
+    .info-panel p{
+        font-size: 12px;
+    }
+
+    .info-image{
+        height: 220px;
+    }
+
+    .mission-text{
+        width: 95vw;
+        max-width: 100%;
+    }
+
+    .mission-text h1{
+        font-size: 35px;
+    }
+
+    .mission-text h3{
+        font-size: 15px;
+    }
+
+    .stat h2{
+        font-size: 18px;
+    }
+
+    .stat h3{
+        font-size: 14px;
+    }
+
+    .challenges-section h1{
+        font-size: 30px;
+    }
+
+    .challenges-section h3{
+        font-size: 15px;
+        width: 95vw;
+        max-width: 100%;
+    }
+
+    .challenges-section h4{
+        font-size: 15px;
+    }
+
+    .testimonial-section h1{
+        font-size: 40px;
+    }
+
+    .testimonial-section > h2 {
+        font-size: 15px;
+    }
+
+    .testimonial-section span{
+        font-size: 13px;
+    }
+
+    .testimonial img{
+        height: 180px;
+        margin-right: 15px;
+    }
+
+    .testimonial p{
+        font-size: 13px;
+    }
+
+    .testimonial h2{
+        font-size: 15px;
+    }
+
+    .testimonial h3{
+        font-size: 13px;
+    }
+
+    .zoom-left h1{
+        font-size: 30px;
+    }
+
+    .zoom-left h2{
+        font-size: 18px;
+    }
+
+    .zoom-left p{
+        font-size: 13px;
+    }
+
+    .ai-title{
+        font-size: 30px;
+    }
+
+    .ai-description{
+        font-size: 15px;
+    }
+
+    .ai-subtitle{
+        font-size: 15px;
+    }
+
+    .feature-title{
+        font-size: 15px;
+    }
+
+    .feature-description{
+        font-size: 11px;
+    }
+
+    .stat-number{
+        font-size: 25px;
+    }
+
+    .stat-label{
+        font-size: 11px;
+    }
+
+    .cta-title{
+        font-size: 22px;
+    }
+
+    .cta-description{
+        font-size: 13px;
+    }
+
+    .team-title{
+        font-size: 35px;
+    }
+
+    .team-subtitle{
+        font-size: 15px;
+    }
+
+    .member-name{
+        font-size: 15px;
+    }
+
+    .member-role{
+        font-size: 13px;
+    }
+
+    .team-grid {
+        gap: 10px;
+    }
+
+    .member-image{
+        height: 200px;
+    }
+
+    .faq-title{
+        font-size: 30px;
+    }
+
+    .faq-subtitle{
+        font-size: 13px;
+    }
+
+    .faq-question{
+        font-size: 13px;
+    }
+
+    .faq-answer-content{
+        font-size: 11px;
+    }
+
+    /* Footer Mobile Design */
+    .footer-top{
+        padding: 30px 4vw;
+        gap: 15px;
+    }
+
+    .footer-locations{
+        padding: 0 4vw 30px 4vw;
+        gap: 15px;
+    }
+
+    .footer-top h2{
+        font-size: 20px;
+    }
+
+    .footer-top h3{
+        font-size: 15px;
+    }
+
+    .footer-links a{
+        font-size: 13px;
+    }
+
+    .footer-location h3{
+        font-size: 15px;
+    }
+
+    .footer-location p{
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    /* Reverted Section Spacing for specific sections */
+    .about{
+        padding-bottom: 400px;
+        margin-bottom: 500px;
+    }
+
+    .info-section{
+        padding: 100px 10vw;
+    }
+
+    .challenges-section{
+        padding: 200px 10vw;
+    }
+
+    .team{
+        padding: 30px 3vw;
+    }
+
+    .faq{
+        padding: 30px 3vw;
+    }
+
+    .nav h3{
+        font-size: 18px;
+    }
+
+    .links a{
+        font-size: 12px;
+    }
+
+    .nav-main-link{
+        font-size: 11px;
+    }
+
+    .heading h1{
+        font-size: 35px;
+        line-height: 45px;
+    }
+
+    .heading h2{
+        font-size: 14px;
+        width: 98vw;
+        max-width: 100%;
+    }
+
+    .heading h3{
+        font-size: 12px;
+    }
+
+    .about h1{
+        font-size: 25px;
+    }
+
+    .about h2{
+        font-size: 12px;
+    }
+
+    .about-description p{
+        width: 98vw;
+        max-width: 100%;
+        font-size: 12px;
+    }
+
+    .video-box{
+        height: 180px;
+        width: 98vw;
+    }
+
+    .info-faq-wrap{
+        width: 98vw;
+        max-width: 100%;
+    }
+
+    .info-accordion h2{
+        font-size: 18px;
+    }
+
+    .info-accordion p{
+        font-size: 12px;
+    }
+
+    .info-panel p{
+        font-size: 10px;
+    }
+
+    .info-image{
+        height: 180px;
+    }
+
+    .mission-text{
+        width: 98vw;
+        max-width: 100%;
+    }
+
+    .mission-text h1{
+        font-size: 28px;
+    }
+
+    .mission-text h3{
+        font-size: 13px;
+    }
+
+    .stat h2{
+        font-size: 16px;
+    }
+
+    .stat h3{
+        font-size: 12px;
+    }
+
+    .challenges-section h1{
+        font-size: 25px;
+    }
+
+    .challenges-section h3{
+        font-size: 13px;
+        width: 98vw;
+        max-width: 100%;
+    }
+
+    .challenges-section h4{
+        font-size: 13px;
+    }
+
+    .testimonial-section h1{
+        font-size: 30px;
+    }
+
+    .testimonial-section > h2 {
+        font-size: 13px;
+    }
+
+    .testimonial-section span{
+        font-size: 11px;
+    }
+
+    .testimonial img{
+        height: 150px;
+        margin-right: 10px;
+    }
+
+    .testimonial p{
+        font-size: 12px;
+    }
+
+    .testimonial h2{
+        font-size: 13px;
+    }
+
+    .testimonial h3{
+        font-size: 11px;
+    }
+
+    .zoom-left h1{
+        font-size: 25px;
+    }
+
+    .zoom-left h2{
+        font-size: 16px;
+    }
+
+    .zoom-left p{
+        font-size: 12px;
+    }
+
+    .ai-title{
+        font-size: 25px;
+    }
+
+    .ai-description{
+        font-size: 13px;
+    }
+
+    .ai-subtitle{
+        font-size: 13px;
+    }
+
+    .feature-title{
+        font-size: 13px;
+    }
+
+    .feature-description{
+        font-size: 10px;
+    }
+
+    .stat-number{
+        font-size: 20px;
+    }
+
+    .stat-label{
+        font-size: 10px;
+    }
+
+    .cta-title{
+        font-size: 18px;
+    }
+
+    .cta-description{
+        font-size: 11px;
+    }
+
+    .team-title{
+        font-size: 25px;
+    }
+
+    .team-subtitle{
+        font-size: 13px;
+    }
+
+    .member-name{
+        font-size: 13px;
+    }
+
+    .member-role{
+        font-size: 11px;
+    }
+
+    .team-grid {
+        gap: 8px;
+    }
+
+    .member-image{
+        height: 150px;
+    }
+
+    .faq-title{
+        font-size: 25px;
+    }
+
+    .faq-subtitle{
+        font-size: 11px;
+    }
+
+    .faq-question{
+        font-size: 11px;
+    }
+
+    .faq-answer-content{
+        font-size: 9px;
+    }
+
+    /* Footer Mobile Design */
+    .footer-top{
+        padding: 25px 3vw;
+        gap: 10px;
+    }
+
+    .footer-locations{
+        padding: 0 3vw 25px 3vw;
+        gap: 10px;
+    }
+
+    .footer-top h2{
+        font-size: 18px;
+    }
+
+    .footer-top h3{
+        font-size: 14px;
+    }
+
+    .footer-links a{
+        font-size: 11px;
+    }
+
+    .footer-location h3{
+        font-size: 14px;
+    }
+
+    .footer-location p{
+        font-size: 9px;
+    }
+}

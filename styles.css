@@ -4,6 +4,24 @@
   box-sizing: border-box;
 }
 
+/* Scroll Animation Initial States */
+.fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure proper positioning for animated elements */
+.fade-up {
+  position: relative;
+  z-index: 1;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -40,6 +58,11 @@
   padding: 0px 10px;
   font-family: "Inter";
   font-weight: 400;
+  transition: 0.5s;
+}
+
+.links a:hover{
+  text-decoration: underline;
 }
 
 .nav-main-link {
@@ -52,6 +75,12 @@
   font-family: "Jost";
   border-radius: 100px;
   font-weight: 500;
+  transition: 0.5s;
+}
+
+.nav-main-link:hover{
+  background: white;
+  color: black;
 }
 
 .header {
@@ -80,20 +109,33 @@
 }
 
 .heading h1 {
-  font-size: 80px;
+  font-size: 70px;
   font-family: "Jost";
   line-height: 100px;
   margin-bottom: 15px;
+  width: 90vw;
 }
 
 .heading h2 {
   font-size: 25px;
   font-family: "Inter";
-  width: 500px;
+  width: 550px;
   font-weight: 300;
   margin: 0 auto;
   margin-bottom: 50px;
+  line-height: 40px;
 }
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
 
 .main-link {
   padding: 15px 30px;
@@ -106,6 +148,12 @@
   font-weight: 500;
   width: 200px;
   margin: 0 auto;
+  transition: 0.5s;
+}
+
+.main-link:hover{
+  background: white;
+  color: black;
 }
 
 /* .main-image{
@@ -139,10 +187,6 @@
   font-family: "Jost";
   margin-bottom: 20px;
 }
-
-/* .about h1 span{
-  color: #7866F6;
-} */
 
 .about p {
   font-size: 20px;
@@ -202,7 +246,8 @@
 }
 
 .play-button:hover {
-  filter: brightness(0.7);
+  background: white;
+  filter: grayscale(100%);
 }
 
 .play-button img {
@@ -336,11 +381,11 @@
 }
 
 .mission-text h3 {
-  font-size: 30px;
+  font-size: 25px;
   color: white;
   font-family: "Inter";
   font-weight: 400;
-  line-height: 50px;
+  line-height: 40px;
   margin-bottom: 70px;
   width: 700px;
 }
@@ -355,6 +400,12 @@
   font-size: 18px;
   font-weight: 500;
   width: 200px;
+  transition: 0.5s;
+}
+
+.mission-main-link:hover{
+  color: black;
+  background: white;
 }
 
 .stats {
@@ -680,6 +731,12 @@
   font-size: 16px;
   font-weight: 500;
   width: 200px;
+  transition: 0.5s;
+}
+
+.zoom-left a:hover{
+  background: white;
+  color: black;
 }
 
 /* Smaller Zoom meeting mockup */
@@ -1004,13 +1061,13 @@
   font-size: 18px;
   font-weight: 500;
   display: inline-block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease, color 0.5s ease;
 }
 
-/* .ai-main-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(252, 235, 128, 0.3);
-} */
+.ai-main-link:hover {
+  background: white;
+  color: black;
+}
 
 /* Animations */
 @keyframes brain-pulse {
@@ -1039,7 +1096,7 @@
 }
 
 .team {
-  padding: 300px 2rem 150px 2rem;
+  padding: 300px 2rem 400px 2rem;
   min-height: 100vh;
 }
 
@@ -1087,9 +1144,8 @@
 
 .member-image {
   width: 100%;
-  height: 32rem; /* 512px */
+  height: 500px;
   object-fit: cover;
-  box-shadow: 0 0 50px 15px hsl(270, 100%, 80%, 0.3); /* Purple glow */
 }
 
 .member-name {
@@ -1293,266 +1349,4 @@ footer {
   padding: 15px 0px;
   font-size: 12px;
   color: #5d539f;
-}
-
-/* ========================== */
-/* 📱 Small devices (phones < 768px) */
-/* ========================== */
-@media (max-width: 768px) {
-  /* Navigation */
-  .nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 15px 5vw;
-  }
-
-  .nav h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  .links {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 10px 0;
-    gap: 10px;
-  }
-
-  .links a {
-    font-size: 14px;
-  }
-
-  .nav-main-link {
-    margin-top: 10px;
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  /* Heading */
-  .heading h1 {
-    font-size: 36px;
-    line-height: 1.2;
-  }
-
-  .heading h2 {
-    font-size: 16px;
-    width: 90%;
-  }
-
-  /* About */
-  .about p {
-    width: 100%;
-    font-size: 15px;
-    line-height: 24px;
-  }
-
-  /* Video */
-  .video-box {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
-  /* Info section */
-  .info-section {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .info-faq-wrap {
-    width: 100%;
-    padding: 0;
-  }
-
-  .info-panel {
-    padding: 20px;
-  }
-
-  .info-panel p {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  /* Mission */
-  .mission-section {
-    flex-direction: column;
-    padding: 60px 5vw;
-    gap: 40px;
-  }
-
-  .mission-text h1 {
-    font-size: 36px;
-  }
-
-  .mission-text h3 {
-    font-size: 16px;
-    width: 100%;
-  }
-
-  .stats {
-    border-left: none;
-    border-top: 1px solid white;
-    padding-top: 30px;
-    margin-top: 20px;
-  }
-
-  /* Challenges */
-  .challenges-section h1 {
-    font-size: 40px;
-  }
-
-  .challenges-section h3 {
-    font-size: 16px;
-    width: 100%;
-  }
-
-  .carousel-card {
-    min-width: 220px;
-    height: 380px;
-  }
-
-  /* Workshops / Zoom */
-  .zoom {
-    flex-direction: column;
-    padding: 60px 5vw;
-  }
-
-  .zoom-grid {
-    width: 100%;
-    height: auto;
-  }
-
-  .zoom-left h1 {
-    font-size: 36px;
-  }
-
-  .zoom-left p {
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  /* AI Section */
-  .ai-title {
-    font-size: 32px;
-  }
-
-  .ai-description {
-    font-size: 14px;
-    width: 100%;
-  }
-
-  /* Team */
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .member-image {
-    height: 280px;
-  }
-
-  /* FAQ */
-  .faq-title {
-    font-size: 32px;
-  }
-
-  /* Footer */
-  .footer-top {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  .footer-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .footer-locations {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
-}
-
-/* ========================== */
-/* 💻 Medium devices (tablets 768px–1200px) */
-/* ========================== */
-@media (min-width: 769px) and (max-width: 1200px) {
-  .heading h1 {
-    font-size: 54px;
-  }
-
-  .heading h2 {
-    font-size: 20px;
-  }
-
-  .about p {
-    width: 90%;
-    font-size: 16px;
-    line-height: 28px;
-  }
-
-  .video-box {
-    max-width: 800px;
-    aspect-ratio: 16 / 9;
-  }
-
-  .mission-text h1 {
-    font-size: 54px;
-  }
-
-  .zoom-left h1 {
-    font-size: 44px;
-  }
-
-  .ai-title {
-    font-size: 48px;
-  }
-
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ========================== */
-/* 🖥️ Large devices (desktops > 1600px) */
-/* ========================== */
-@media (min-width: 1600px) {
-  .heading h1 {
-    font-size: 96px;
-    line-height: 1.1;
-  }
-
-  .heading h2 {
-    font-size: 28px;
-  }
-
-  .about p,
-  .challenges-section h3,
-  .zoom-left p {
-    font-size: 20px;
-    line-height: 34px;
-    max-width: 70%;
-  }
-
-  .mission-text h1 {
-    font-size: 80px;
-  }
-
-  .carousel-card {
-    min-width: 340px;
-    height: 650px;
-  }
-
-  .ai-title {
-    font-size: 72px;
-  }
-
-  .team-title {
-    font-size: 80px;
-  }
-
-  .faq-title {
-    font-size: 64px;
-  }
 }

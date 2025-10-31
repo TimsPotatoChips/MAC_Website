@@ -62,6 +62,36 @@ window.addEventListener("scroll", () => {
   }
 });
 
+// Mobile navigation toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+      navToggle.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!nav.contains(event.target)) {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+      }
+    });
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   const faqItems = document.querySelectorAll('.faq-item');
   
@@ -88,6 +118,119 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Register GSAP ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Scroll animations setup
+  const animatedElements = document.querySelectorAll('.fade-up');
+  
+  // Create scroll animations with different types for variety
+  animatedElements.forEach((element, index) => {
+    // Different animation types based on element type and position
+    let animationType = 'fadeUp';
+    
+    // Determine animation type based on element class or content
+    if (element.classList.contains('heading')) {
+      animationType = 'fadeUp';
+    } else if (element.classList.contains('video-box')) {
+      animationType = 'fadeIn';
+    } else if (element.classList.contains('stats')) {
+      animationType = 'fadeIn';
+    } else if (element.querySelector('.carousel-container')) {
+      animationType = 'slideUp';
+    } else if (element.classList.contains('testimonial-section')) {
+      animationType = 'fadeUp';
+    } else if (element.classList.contains('zoom')) {
+      animationType = 'fadeUp';
+    } else if (element.classList.contains('ai-container')) {
+      animationType = 'fadeUp';
+    } else if (element.classList.contains('team-container')) {
+      animationType = 'fadeIn';
+    } else if (element.classList.contains('faq-container')) {
+      animationType = 'slideUp';
+    } else if (element.classList.contains('about-description')) {
+      animationType = 'fadeUp';
+    } else if (element.classList.contains('info-faq-wrap')) {
+      animationType = 'slideLeft';
+    } else if (element.classList.contains('info-image')) {
+      animationType = 'slideUp';
+    } else if (element.classList.contains('mission-text')) {
+      animationType = 'fadeUp';
+    } else {
+      // Default to fadeUp for other elements
+      animationType = 'fadeUp';
+    }
+
+    let fromProps = {};
+    let toProps = {
+      opacity: 1,
+      duration: 0.8,
+      ease: "power2.out",
+      // delay: index * 0.05, // Removed delay for immediate hover effects
+      scrollTrigger: {
+        trigger: element,
+        start: "top 85%",
+        end: "bottom 15%",
+        toggleActions: "play none none none",
+        once: true,
+        refreshPriority: -1
+      }
+    };
+
+    // Set different animation properties based on type
+    switch (animationType) {
+      case 'fadeUp':
+        fromProps = { opacity: 0, y: 60 };
+        toProps.y = 0;
+        break;
+      case 'slideUp':
+        fromProps = { opacity: 0, y: 80 };
+        toProps.y = 0;
+        toProps.ease = "back.out(1.7)";
+        break;
+      case 'fadeIn':
+        fromProps = { opacity: 0 };
+        break;
+      case 'slideLeft':
+        fromProps = { opacity: 0, x: -60 };
+        toProps.x = 0;
+        break;
+      default:
+        fromProps = { opacity: 0, y: 40 };
+        toProps.y = 0;
+    }
+
+    // Special handling for video-box to preserve its positioning
+    if (element.classList.contains('video-box')) {
+      fromProps = { opacity: 0 };
+      toProps = {
+        opacity: 1,
+        duration: 0.8,
+        ease: "power2.out",
+        // delay: index * 0.05, // Removed delay for immediate hover effects
+        scrollTrigger: {
+          trigger: element,
+          start: "top 85%",
+          end: "bottom 15%",
+          toggleActions: "play none none none",
+          once: true,
+          refreshPriority: -1
+        }
+      };
+    }
+
+    // Create the animation with callback
+    const animation = gsap.fromTo(element, fromProps, toProps);
+    
+    // Reinitialize hover effects when animation completes
+    animation.eventCallback("onComplete", () => {
+        if (element.classList.contains('ai-container')) {
+            // Reinitialize hover effects for AI features after animation
+            initializeHoverEffects();
+        }
+    });
+  });
+
   // Animated counter for statistics
   function animateCounter(element, target, duration = 2000) {
       let start = 0;
@@ -140,16 +283,72 @@ document.addEventListener('DOMContentLoaded', function() {
       feature.style.animationDelay = `${index * 0.2}s`;
   });
 
-  // Interactive hover effects for features
-  document.querySelectorAll('.ai-feature').forEach(feature => {
-      feature.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-15px) scale(1.02)';
+  // Interactive hover effects for features - initialize immediately
+  function initializeHoverEffects() {
+      document.querySelectorAll('.ai-feature').forEach(feature => {
+          // Remove any existing listeners to avoid duplicates
+          feature.removeEventListener('mouseenter', handleMouseEnter);
+          feature.removeEventListener('mouseleave', handleMouseLeave);
+          
+          // Add hover event listeners
+          feature.addEventListener('mouseenter', handleMouseEnter);
+          feature.addEventListener('mouseleave', handleMouseLeave);
+      });
+  }
+
+  // Hover effect handlers
+  function handleMouseEnter() {
+      this.style.transform = 'translateY(-15px) scale(1.02)';
+  }
+
+  function handleMouseLeave() {
+      this.style.transform = 'translateY(0) scale(1)';
+  }
+
+  // Initialize hover effects immediately
+  initializeHoverEffects();
+
+  // Also initialize hover effects for other image elements
+  function initializeImageHoverEffects() {
+      // Add hover effects for team member images
+      document.querySelectorAll('.member-image').forEach(img => {
+          img.addEventListener('mouseenter', function() {
+              this.style.transform = 'scale(1.05)';
+              this.style.transition = 'transform 0.3s ease';
+          });
+          
+          img.addEventListener('mouseleave', function() {
+              this.style.transform = 'scale(1)';
+          });
       });
 
-      feature.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0) scale(1)';
+      // Add hover effects for testimonial images
+      document.querySelectorAll('.testimonial img').forEach(img => {
+          img.addEventListener('mouseenter', function() {
+              this.style.transform = 'scale(1.05)';
+              this.style.transition = 'transform 0.3s ease';
+          });
+          
+          img.addEventListener('mouseleave', function() {
+              this.style.transform = 'scale(1)';
+          });
       });
-  });
+
+      // Add hover effects for carousel images
+      document.querySelectorAll('.carousel-card img').forEach(img => {
+          img.addEventListener('mouseenter', function() {
+              this.style.transform = 'scale(1.05)';
+              this.style.transition = 'transform 0.3s ease';
+          });
+          
+          img.addEventListener('mouseleave', function() {
+              this.style.transform = 'scale(1)';
+          });
+      });
+  }
+
+  // Initialize image hover effects immediately
+  initializeImageHoverEffects();
 
   // Add floating animation to feature icons
   function addFloatingAnimation() {
@@ -166,8 +365,8 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  // Initialize floating animation after a delay
-  setTimeout(addFloatingAnimation, 1000);
+  // Initialize floating animation immediately
+  addFloatingAnimation();
 
   // Add particle effect to background
   function createParticles() {
@@ -248,3 +447,101 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('AI Journey started!');
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector(".carousel-track");
+    const cards = document.querySelectorAll(".carousel-card");
+    const dots = document.querySelectorAll(".carousel-dots .dot");
+  
+    let currentIndex = 0;
+  
+    function updateCarousel(index) {
+        const cardWidth = cards[0].offsetWidth + 16; // 16 = your margin-right
+        let transformX;
+      
+        if (index === cards.length - 1) {
+          // Stop fully at last card
+          transformX = cardWidth * (cards.length - 1);
+        } else {
+          transformX = cardWidth * index;
+        }
+      
+        track.style.transform = `translateX(-${transformX}px)`;
+      
+        // update dots
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[index]) dots[index].classList.add('active');
+      
+        currentIndex = index;
+    }
+      
+  
+    // Click listeners for dots
+    dots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        const index = parseInt(dot.dataset.index);
+        updateCarousel(index);
+      });
+    });
+  
+    // Optional: autoplay with dots syncing
+    setInterval(() => {
+      let newIndex = (currentIndex + 1) % cards.length;
+      updateCarousel(newIndex);
+    }, 4000);
+  });  
+
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+
+  // Adjust canvas to window size
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = document.querySelector(".header").offsetHeight;
+  }
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  // Particle setup
+  const particles = [];
+  const particleCount = 35; // small number for subtle effect
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2 + 1,
+      speed: Math.random() * 0.5 + 0.3,
+      opacity: Math.random() * 0.5 + 0.2,
+    });
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  function updateParticles() {
+    for (let p of particles) {
+      p.y -= p.speed;
+      if (p.y < -10) {
+        // recycle particle to bottom
+        p.y = canvas.height + 10;
+        p.x = Math.random() * canvas.width;
+        p.opacity = Math.random() * 0.5 + 0.2;
+      }
+    }
+  }
+
+  function animate() {
+    drawParticles();
+    updateParticles();
+    requestAnimationFrame(animate);
+  }
+
+  animate();

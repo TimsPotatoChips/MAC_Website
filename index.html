@@ -4,27 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
     <title>ACF | MAC</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <div>
     <div class="nav">
         <h3>ACF</h3>
 
-        <div class="links">
-            <a href = "#">About</a>
+        <div class="links" id="nav-menu">
+            <a href = "#about">About</a>
             <a href = "#">Current Challenge</a>
-            <a href = "#">Past Challenges</a>
+            <a href = "#challenges">Past Challenges</a>
         </div>
-        
+
         <a class = "nav-main-link" href = "#">Sign Up</a>
+        
+        <!-- Hamburger Menu Toggle -->
+        <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
     </div>
 
     <div class="header">
-        <div class = "heading">
+        <canvas id="particles"></canvas>
+
+        <div class = "heading fade-up">
             <h3>Unlock Your True Coding Potential</h3>
             <h1>Monthly App Challenge</h1>
             <h2>Connect, Collaborate, and Create with people around the globe to make impact.</h2>
@@ -35,8 +49,8 @@
         <!-- <img src = "images/earth-image.png" class = "main-image"> -->
     </div>
 
-    <div class="about">
-        <div class = "about-description">
+    <div class="about" id = "about">
+        <div class = "about-description fade-up">
             <h2>Learn More About Us</h2>
             <h1>Why M.A.C?</h1>
     
@@ -45,7 +59,7 @@
                 Jump in, watch our video, and see how we connect coders from every corner of the world into one creative community. Jump in, watch our video, and see how we connect coders from every corner of the world into one creative community.</p>
         </div>
 
-        <div class="video-box">
+        <div class="video-box fade-up">
             <div class="video-image"></div>
             <div class="video-cover"></div>
             <button class="play-button">
@@ -55,7 +69,7 @@
     </div>
 
     <div class = "info-section">
-        <div class = "info-faq-wrap">
+        <div class = "info-faq-wrap fade-up">
             <div class="info-faq">
                 <button class="info-accordion active">
                     <p>01</p>
@@ -102,11 +116,11 @@
             </div>
         </div>
         
-        <div class = "info-image"></div>
+        <div class = "info-image fade-up"></div>
     </div>
 
     <div class = "mission-section">
-        <div class = "mission-text">
+        <div class = "mission-text fade-up">
             <h1>Our Mission</h1>
 
             <h3>M.A.C provides opportunities to learn computer science while gaining real-world experience that prepares you for 
@@ -115,7 +129,7 @@
             <a class = "mission-main-link" href = "#">Start Your Journey</a>
         </div>
 
-        <div class = "stats">
+        <div class = "stats fade-up">
             <div class="stat-row">
                 <div class = "stat">
                     <h2>30+</h2>
@@ -142,14 +156,15 @@
         </div>
     </div>
 
-    <div class = "challenges-section">
+    <div class = "challenges-section" id = "challenges">
         <div class = "triangle"></div>
 
-        <h1>Our Monthly Challenges</h1>
-        <h3>Join our monthly themed Live Zoom workshops and challenges that sharpen coding skills, build communication and teamwork, and offer real opportunities to apply your knowledge in real-world projects.</h3>
+        <div class="fade-up">
+            <h1>Our Monthly Challenges</h1>
+            <h3>Join our monthly themed Live Zoom workshops and challenges that sharpen coding skills, build communication and teamwork, and offer real opportunities to apply your knowledge in real-world projects.</h3>
 
-        <h4>Past Challenges</h4>
-        <div class="carousel-container">
+            <h4>Past Challenges</h4>
+            <div class="carousel-container">
             <div class="carousel-track">
                 <div class="carousel-card">
                     <img src="images/star-wars.jpeg" alt="Star Wars App">
@@ -176,9 +191,10 @@
         </div>
 
         <div class="carousel-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+          </div>
         </div>
 
         <div class = "triangle"></div>
@@ -187,7 +203,7 @@
     <div class="long-gradient">
         <div class = "triangle"></div>
 
-        <div class="testimonial-section">
+        <div class="testimonial-section fade-up">
             <span>We're Highly Trusted</span>
             <h1>From Our Community</h1>
             <h2>See how learning with MAC has made a difference.</h2>
@@ -217,10 +233,9 @@
             </div>
         </div>
 
-        <div class="zoom">
+        <div class="zoom fade-up">
             <div class="zoom-left">
-                <h1>Free Zoom Workshops</h1>
-                <h2>Saturdays 11:00am - 12:00pm PT</h2>
+                <h1>Free Zoom Workshops Saturdays 11:00am - 12:00pm PT</h2>
 
                 <p>The workshop sessions centers around implementing new features, whether ideas in our curriculum or your own. Additionally, you can bring your own questions to debug with the coding community as well as our MAC mentors.
                     <br><br>
@@ -256,7 +271,7 @@
         </div>
 
         <div class="ai-section">
-            <div class="ai-container">
+            <div class="ai-container fade-up">
                 <div class="ai-header">
                     <h3 class="ai-subtitle">AI-Powered Learning</h3>
                     <h1 class="ai-title">The Future of Programming Education</h1>
@@ -299,39 +314,6 @@
                             and helps you overcome coding obstacles whenever you need support.
                         </p>
                     </div>
-    
-                    <div class="ai-feature" data-feature="3">
-                        <div class="feature-icon">
-                            <div class="ai-analytics"></div>
-                        </div>
-                        <h3 class="feature-title">Learning Analytics</h3>
-                        <p class="feature-description">
-                            Advanced AI analytics track your progress, identify knowledge gaps, and recommend 
-                            specific areas for improvement to accelerate your learning journey.
-                        </p>
-                    </div>
-
-                    <div class="ai-feature" data-feature="4">
-                        <div class="feature-icon">
-                            <div class="ai-brain"></div>
-                        </div>
-                        <h3 class="feature-title">AI-Assisted Code Review</h3>
-                        <p class="feature-description">
-                            Get instant, intelligent feedback on your code with our AI-powered review system that identifies 
-                            bugs, suggests optimizations, and teaches best practices in real-time.
-                        </p>
-                    </div>
-
-                    <div class="ai-feature" data-feature="5">
-                        <div class="feature-icon">
-                            <div class="ai-brain"></div>
-                        </div>
-                        <h3 class="feature-title">AI-Assisted Code Review</h3>
-                        <p class="feature-description">
-                            Get instant, intelligent feedback on your code with our AI-powered review system that identifies 
-                            bugs, suggests optimizations, and teaches best practices in real-time.
-                        </p>
-                    </div>
                 </div>
     
                 <div class="ai-stats">
@@ -362,7 +344,7 @@
         </div>
 
         <div class="team">
-            <div class="team-container">
+            <div class="team-container fade-up">
                 <div class="team-header">
                     <h1 class="team-title">Our Team</h1>
                     <p class="team-subtitle">Our global and talented team of coaches and directors</p>
@@ -405,7 +387,7 @@
         </div>
 
         <div class="faq">
-            <div class="faq-container">
+            <div class="faq-container fade-up">
                 <div class="faq-header">
                     <h2 class="faq-title">Frequently Asked Questions</h2>
                     <p class="faq-subtitle">
