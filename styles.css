@@ -30,6 +30,7 @@
   color: white;
   width: 100vw;
   z-index: 100000000;
+  justify-content: space-between;
 }
 
 .nav.scrolled {
@@ -47,8 +48,7 @@
 .links {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-grow: 1; /* takes up center space */
+  
 }
 
 .links a {
